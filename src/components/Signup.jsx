@@ -35,9 +35,9 @@ function Signup() {
     <form onSubmit={handleSubmit}>
       <h2>Sign up</h2>
       <div>
-        <label>Email</label>
+        <label>Username</label>
         <input
-          type="email"
+          type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
