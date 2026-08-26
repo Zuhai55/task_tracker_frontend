@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function Signup() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
@@ -14,7 +14,7 @@ function Signup() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ username, password })
       });
 
       const data = await response.json();
@@ -34,11 +34,16 @@ function Signup() {
     <form onSubmit={handleSubmit}>
       <h2>Sign up</h2>
       <div>
-        <label>Email</label>
+        <label>Username</label>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          autoComplete="username"
+          minLength="3"
+          pattern="[A-Za-z0-9_]+"
+          title="Use at least 3 letters, numbers, or underscores."
+          required
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div>
