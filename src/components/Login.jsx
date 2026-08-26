@@ -1,7 +1,8 @@
+
 import { useState } from 'react';
 
 function Login({ onLoginSuccess }) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
@@ -14,7 +15,7 @@ function Login({ onLoginSuccess }) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password })
       });
 
       const data = await response.json();
@@ -35,13 +36,11 @@ function Login({ onLoginSuccess }) {
     <form onSubmit={handleSubmit}>
       <h2>Log in</h2>
       <div>
-        <label>Username</label>
+        <label>Email</label>
         <input
-          type="text"
-          autoComplete="username"
-          required
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div>

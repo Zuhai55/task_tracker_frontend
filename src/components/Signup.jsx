@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 
 function Signup() {
@@ -34,14 +35,9 @@ function Signup() {
     <form onSubmit={handleSubmit}>
       <h2>Sign up</h2>
       <div>
-        <label>Username</label>
+        <label>Email</label>
         <input
-          type="text"
-          autoComplete="username"
-          minLength="3"
-          pattern="[A-Za-z0-9_]+"
-          title="Use at least 3 letters, numbers, or underscores."
-          required
+          type="email"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
