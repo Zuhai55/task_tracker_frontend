@@ -8,6 +8,7 @@ function Tasks({ token }) {
   const [editTitle, setEditTitle] = useState('');
   const [editDescription, setEditDescription] = useState('');
   const [editStatus, setEditStatus] = useState('pending');
+  const [message, setMessage] = useState('');
 
   async function fetchTasks() {
     try {
@@ -29,6 +30,7 @@ function Tasks({ token }) {
 
   async function handleCreateTask(event) {
     event.preventDefault();
+    setMessage('');
 
     try {
       const response = await fetch('http://localhost:5000/tasks', {
@@ -40,8 +42,10 @@ function Tasks({ token }) {
         body: JSON.stringify({ title, description })
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        console.error('Failed to create task');
+        setMessage(data.error || 'Failed to create task');
         return;
       }
 
@@ -49,11 +53,13 @@ function Tasks({ token }) {
       setDescription('');
       fetchTasks();
     } catch (err) {
-      console.error('Something went wrong:', err.message);
+      setMessage('Something went wrong: ' + err.message);
     }
   }
 
   async function handleDeleteTask(taskId) {
+    setMessage('');
+
     try {
       const response = await fetch('http://localhost:5000/tasks/' + taskId, {
         method: 'DELETE',
@@ -63,17 +69,19 @@ function Tasks({ token }) {
       });
 
       if (!response.ok) {
-        console.error('Failed to delete task');
+        const data = await response.json();
+        setMessage(data.error || 'Failed to delete task');
         return;
       }
 
       fetchTasks();
     } catch (err) {
-      console.error('Something went wrong:', err.message);
+      setMessage('Something went wrong: ' + err.message);
     }
   }
 
   function handleStartEdit(task) {
+    setMessage('');
     setEditingTaskId(task.id);
     setEditTitle(task.title);
     setEditDescription(task.description || '');
@@ -82,9 +90,15 @@ function Tasks({ token }) {
 
   function handleCancelEdit() {
     setEditingTaskId(null);
+    setMessage('');
   }
 
   async function handleSaveEdit(taskId) {
+    if (!editTitle.trim()) {
+      setMessage('Title is required');
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:5000/tasks/' + taskId, {
         method: 'PUT',
@@ -99,21 +113,25 @@ function Tasks({ token }) {
         })
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        console.error('Failed to update task');
+        setMessage(data.error || 'Failed to update task');
         return;
       }
 
       setEditingTaskId(null);
       fetchTasks();
     } catch (err) {
-      console.error('Something went wrong:', err.message);
+      setMessage('Something went wrong: ' + err.message);
     }
   }
 
   return (
     <div>
       <h2>Your Tasks</h2>
+
+      {message && <p>{message}</p>}
 
       <form onSubmit={handleCreateTask}>
         <input
