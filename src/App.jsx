@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
-<<<<<<< HEAD
-import Tasks from './components/Tasks';
-import './App.css';
-=======
->>>>>>> parent of 7fe6761 (added Tasks to frontend)
 
 function App() {
   const [token, setToken] = useState(null);
@@ -17,14 +12,6 @@ function App() {
     setShowAccount(true);
   }
 
-<<<<<<< HEAD
-  function handleLogout() {
-    setToken(null);
-  }
-
-  function closeAccount() {
-    setShowAccount(false);
-=======
   let content;
   if (token) {
     content = <p>You are logged in. Token: {token}</p>;
@@ -35,7 +22,6 @@ function App() {
         <Login onLoginSuccess={handleLoginSuccess} />
       </div>
     );
->>>>>>> parent of 7fe6761 (added Tasks to frontend)
   }
 
   return (
