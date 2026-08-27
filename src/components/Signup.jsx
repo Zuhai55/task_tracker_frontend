@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import '../App.css'
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -32,27 +33,29 @@ function Signup() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Sign up</h2>
-      <div>
-        <label>Username</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Sign up</button>
-      {message && <p>{message}</p>}
-    </form>
+    <div id="signup">
+      <form onSubmit={handleSubmit}>
+        <h2>Sign up</h2>
+        <div>
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Sign up</button>
+        {message && <p>{message}</p>}
+      </form>
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Tasks from './components/Tasks';
+import './App.css';
 
 function App() {
   const [token, setToken] = useState(function () {
@@ -43,7 +44,7 @@ function App() {
 
   return (
     <div>
-      <h1>Task Tracker</h1>
+      <h1 id="big_title">Task Tracker</h1>
       {content}
     </div>
   );
