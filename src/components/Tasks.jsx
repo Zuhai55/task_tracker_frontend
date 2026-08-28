@@ -128,7 +128,7 @@ function Tasks({ token }) {
   }
 
   return (
-    <div>
+    <div id="tasks">
       <h2>Your Tasks</h2>
 
       {message && <p>{message}</p>}
@@ -148,7 +148,7 @@ function Tasks({ token }) {
         />
         <button type="submit">Add Task</button>
       </form>
-
+      <hr></hr>
       <ul>
         {tasks.map(function (task) {
           if (editingTaskId === task.id) {
@@ -180,9 +180,11 @@ function Tasks({ token }) {
 
           return (
             <li key={task.id}>
+              <div id="task_info">
               {task.title} — {task.description} - {task.status}
-              <button onClick={() => handleStartEdit(task)}>Edit</button>
-              <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+              </div>
+                <button onClick={() => handleDeleteTask(task.id)}>Delete</button>         
+                <button onClick={() => handleStartEdit(task)}>Edit</button>                         
             </li>
           );
         })}

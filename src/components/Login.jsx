@@ -33,27 +33,29 @@ function Login({ onLoginSuccess }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Log in</h2>
-      <div>
-        <label>Username</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Log in</button>
-      {message && <p>{message}</p>}
-    </form>
+    <div class="signup_login" id="login">
+      <form onSubmit={handleSubmit}>
+        <h2>Log in</h2>
+        <div>
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Log in</button>
+        {message && <p>{message}</p>}
+      </form>
+    </div>
   );
 }
 

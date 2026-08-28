@@ -27,24 +27,36 @@ function App() {
 
   let content;
   if (token) {
-    content = (
-      <div>
+    return (
+    <div>
+      <header>
+        <h1 id="task_title">Task Tracker</h1>
         <button onClick={handleLogout}>Log out</button>
+      </header>
+      <div id="tasks">
         <Tasks token={token} />
       </div>
-    );
+    </div>
+  );
   } else {
-    content = (
+    return (
+    <div>
+      <header>
+        <h1>Task Tracker</h1>
+      </header>
       <div>
         <Signup />
         <Login onLoginSuccess={handleLoginSuccess} />
       </div>
-    );
+    </div>
+  );
   }
 
   return (
     <div>
-      <h1 id="big_title">Task Tracker</h1>
+      <header>
+        <h1>Task Tracker</h1>
+      </header>
       {content}
     </div>
   );
