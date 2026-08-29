@@ -146,7 +146,7 @@ function Tasks({ token }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Add Task</button>
+        <button type="submit">+ Add Task</button>
       </form>
       <hr></hr>
       <ul>
@@ -180,9 +180,9 @@ function Tasks({ token }) {
 
           return (
             <li key={task.id}>
-              <div id="task_info">
-              {task.title} — {task.description} - {task.status}
-              </div>
+              
+              <div id="task_title">{task.title}</div><div id="task_description">{task.description}</div><div id="task_status">{task.status}</div>
+              
                 <button onClick={() => handleDeleteTask(task.id)}>Delete</button>         
                 <button onClick={() => handleStartEdit(task)}>Edit</button>                         
             </li>
