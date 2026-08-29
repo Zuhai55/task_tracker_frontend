@@ -179,12 +179,10 @@ function Tasks({ token }) {
           }
 
           return (
-            <li key={task.id}>
-              
+            <li key={task.id}>             
               <div id="task_title">{task.title}</div><div id="task_description">{task.description}</div><div id="task_status">{task.status}</div>
-              
-                <button onClick={() => handleDeleteTask(task.id)}>Delete</button>         
-                <button onClick={() => handleStartEdit(task)}>Edit</button>                         
+                <button onClick={() => handleStartEdit(task)}>Edit</button> 
+                <button onClick={() => handleDeleteTask(task.id)}>Delete</button>                                              
             </li>
           );
         })}
