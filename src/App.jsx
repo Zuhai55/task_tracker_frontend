@@ -44,7 +44,7 @@ function App() {
       <header>
         <h1>Task Tracker</h1>
       </header>
-      <div>
+      <div className="account-forms">
         <Signup />
         <Login onLoginSuccess={handleLoginSuccess} />
       </div>

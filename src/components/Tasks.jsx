@@ -93,6 +93,13 @@ function Tasks({ token }) {
     setMessage('');
   }
 
+  function formatStatus(status) {
+  if (status === 'in_progress') return 'In Progress';
+  if (status === 'pending') return 'Pending';
+  if (status === 'completed') return 'Completed';
+  return status;
+}
+
   async function handleSaveEdit(taskId) {
     if (!editTitle.trim()) {
       setMessage('Title is required');
@@ -154,17 +161,19 @@ function Tasks({ token }) {
           if (editingTaskId === task.id) {
             return (
               <li key={task.id}>
-                <input
+                <input id="edit_title"
                   type="text"
                   value={editTitle}
                   onChange={(e) => setEditTitle(e.target.value)}
                 />
                 <input
+                  id="edit_description"
                   type="text"
                   value={editDescription}
                   onChange={(e) => setEditDescription(e.target.value)}
                 />
                 <select
+                  id="edit_status"
                   value={editStatus}
                   onChange={(e) => setEditStatus(e.target.value)}
                 >
@@ -180,7 +189,7 @@ function Tasks({ token }) {
 
           return (
             <li key={task.id}>             
-              <div id="task_title">{task.title}</div><div id="task_description">{task.description}</div><div id="task_status">{task.status}</div>
+              <div id="task_title">{task.title}</div><div id="task_description">{task.description}</div><div id="task_status">{formatStatus(task.status)}</div>
                 <button onClick={() => handleStartEdit(task)}>Edit</button> 
                 <button onClick={() => handleDeleteTask(task.id)}>Delete</button>                                              
             </li>
