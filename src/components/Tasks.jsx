@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+API_URL = import.meta.env.VITE_API_URL;
 
 function Tasks({ token }) {
   const [tasks, setTasks] = useState([]);
@@ -12,7 +13,7 @@ function Tasks({ token }) {
 
   async function fetchTasks() {
     try {
-      const response = await fetch('http://localhost:5000/tasks', {
+      const response = await fetch(`${API_URL}/tasks`, {
         headers: {
           'Authorization': 'Bearer ' + token
         }
@@ -33,7 +34,7 @@ function Tasks({ token }) {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/tasks', {
+      const response = await fetch(`${API_URL}/tasks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ function Tasks({ token }) {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/tasks/' + taskId, {
+      const response = await fetch(`${API_URL}/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': 'Bearer ' + token
@@ -107,7 +108,7 @@ function Tasks({ token }) {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/tasks/' + taskId, {
+      const response = await fetch(`${API_URL}/tasks/${taskId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
