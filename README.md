@@ -1,16 +1,37 @@
-# React + Vite
+# Task Tracker — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React frontend for the Task Tracker API — lets users sign up, log in, and manage their tasks through a browser UI.
 
-Currently, two official plugins are available:
+**Live site:** [Click Here](https://task-tracker-frontend-zvga.onrender.com/)
+**Backend repo:** [Click Here](https://github.com/Zuhai55/task_tracker)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Signup and login forms, connected to a JWT-authenticated backend
+- Persistent login — session stored in `localStorage`, survives page refresh
+- Full task management: create, view, edit, and delete tasks
+- Responsive layout for mobile, tablet, and desktop screens
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Library:** React
+- **Build tool:** Vite
+- **Styling:** Plain CSS (flexbox-based, custom, no framework)
+- **Deployment:** Render (Static Site)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```
+task-tracker-frontend/
+├── src/
+│   ├── components/
+│   │   ├── Signup.jsx
+│   │   ├── Login.jsx
+│   │   └── Tasks.jsx
+│   ├── App.jsx
+│   └── App.css
+```
+
+## What I Learned
+
+Built this to learn React fundamentals — component state with `useState`, side effects and data fetching with `useEffect`, lifting state up and passing data between components via props, controlled form inputs, and connecting a frontend to a REST API with `fetch`, including handling auth tokens and CORS across two separately deployed services.
