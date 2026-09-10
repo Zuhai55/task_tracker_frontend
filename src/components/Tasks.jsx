@@ -15,9 +15,11 @@ function Tasks({ token }) {
     try {
       const response = await fetch(`${API_URL}/tasks`, {
         headers: {
-          'Authorization': 'Bearer ' + token
+          'Authorization': 'Bearer ' + token,
+          'ngrok-skip-browser-warning': 'true'
         }
       });
+
       const data = await response.json();
       setTasks(data);
     } catch (err) {
@@ -38,7 +40,8 @@ function Tasks({ token }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
+          'Authorization': 'Bearer ' + token,
+          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({ title, description })
       });
@@ -65,7 +68,8 @@ function Tasks({ token }) {
       const response = await fetch(`${API_URL}/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': 'Bearer ' + token
+          'Authorization': 'Bearer ' + token,
+          'ngrok-skip-browser-warning': 'true'
         }
       });
 
@@ -112,7 +116,8 @@ function Tasks({ token }) {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
+          'Authorization': 'Bearer ' + token,
+          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({
           title: editTitle,
@@ -189,10 +194,10 @@ function Tasks({ token }) {
           }
 
           return (
-            <li key={task.id}>             
+            <li key={task.id}>
               <div id="task_title">{task.title}</div><div id="task_description">{task.description}</div><div id="task_status">{formatStatus(task.status)}</div>
-                <button onClick={() => handleStartEdit(task)}>Edit</button> 
-                <button onClick={() => handleDeleteTask(task.id)}>Delete</button>                                              
+                <button onClick={() => handleStartEdit(task)}>Edit</button>
+                <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
             </li>
           );
         })}
