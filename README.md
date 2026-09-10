@@ -2,7 +2,7 @@
 
 A React frontend for the Task Tracker API — lets users sign up, log in, and manage their tasks through a browser UI.
 
-**Live site:** [Click Here]([url](https://thesaurus-wistful-abnormal.ngrok-free.dev/))
+**Live site:** [Click Here](https://thesaurus-wistful-abnormal.ngrok-free.dev/)
 **Backend repo:** [Click Here](https://github.com/Zuhai55/task_tracker)
 
 ## Features
